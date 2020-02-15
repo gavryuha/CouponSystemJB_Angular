@@ -1,0 +1,24 @@
+<div>
+
+    <a routerLink="/login" routerLinkActive="active" *ngIf="!isLogin"> Login</a>
+
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+
+    <a routerLink="/customer" routerLinkActive="active"*ngIf="isCustomer && isLogin">All Coupons</a>
+
+    <a routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin && isLogin">Admin</a>
+
+    <a routerLink="/company" routerLinkActive="active" *ngIf="isCompany && isLogin">Company</a>
+
+    <a routerLink="/my-coupons" routerLinkActive="active" *ngIf="isCustomer && isLogin">My Coupons</a>
+
+    <a routerLink="/about" routerLinkActive="active">About</a>
+
+    <a (click)="onClickLogout()" *ngIf="isLogin"> Logout</a>
+
+
+
+
+
+
+</div>

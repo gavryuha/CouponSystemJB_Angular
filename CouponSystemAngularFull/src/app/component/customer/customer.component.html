@@ -1,0 +1,57 @@
+<h2 *ngIf="allCoupons">Here Are Our {{allCoupons.length}} Coupons: </h2>
+
+<div class="filter">
+<span>filter by maximumPrice: </span>
+<input min="0" [(ngModel)]="maxPrice" type="number">
+<span>  filter by category: </span>
+<select  [(ngModel)]="categoryFilter">
+
+<option value="-1">All</option>
+<option value="0">Travling</option>
+<option value="1">Food</option>
+<option value="2">Electtricity</option>
+<option value="3">Healh</option>
+<option value="4">Sports</option>
+<option value="5">Camping</option>
+<option value="6">Fashion</option>
+<option value="7">Studies</option>
+
+</select>
+</div>
+
+<div>
+  <table *ngIf="allCoupons">
+    <tr>
+      <th>title</th>
+      <th>startDate</th>
+      <th>endDate</th>
+      <th>amount</th>
+      <th>category</th>
+      <th>message</th>
+      <th>price</th>
+      <th>image</th>
+    </tr>
+      <tr style="cursor: pointer"  routerLink="/coupon-details/{{c.id}}"
+      *ngFor="let c of allCoupons | filter: categoryFilter : maxPrice"
+
+      >
+        <td>           {{ c.title }}                   </td>
+        <td>           {{ c.startDate  }}        </td>
+        <td>           {{ c.endDate }}             </td>
+        <td>        {{c.amount | zeroSymbol}}          </td>
+        <td>           {{ c.category }}                </td>
+        <td>           {{ c.message }}                 </td>
+        <td>        {{c.price | currency: 'ILS'}}      </td>
+
+        <td> <app-thumbnail imageSource="{{ c.imageURL}}"
+          width="80" height="80"
+
+          ></app-thumbnail>
+    </td>
+
+      </tr>
+    </table>
+</div>
+
+
+

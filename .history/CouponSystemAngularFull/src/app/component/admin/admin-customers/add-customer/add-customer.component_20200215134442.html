@@ -1,0 +1,29 @@
+<!-- add customer title -->
+<br>
+<h1>Add Customer:</h1>
+<br>
+
+<form #formInfo="ngForm">
+
+  <input #nameInfo="ngModel" type="text"
+   placeholder="Name..." name="name" [(ngModel)]="customer.name" required>
+  <br>
+  <span *ngIf="nameInfo.errors?.required && nameInfo.touched" >Missing Name</span>
+  <br>
+  <input #emailInfo="ngModel" type="email"
+   placeholder="Email..." name="email" [(ngModel)]="customer.email" required>
+  <br>
+  <span *ngIf="emailInfo.errors?.required && emailInfo.touched" >Missing Email</span>
+  <br>
+
+  <input #passwordInfo="ngModel" required type="password" placeholder="Password..."
+   name="password" [(ngModel)]="customer.password">
+  <br>
+  <span *ngIf="passwordInfo.invalid?.required && passwordInfo.touched" >Missing Password</span>
+  <br><br>
+
+
+  <button [disabled]="!formInfo.form.valid" (click)=" addCustomer()">Add Customer </button>
+  <br><br><br>
+  <button class="cancel" routerLink="/admin/admin-customers"> Cancel</button>
+</form>

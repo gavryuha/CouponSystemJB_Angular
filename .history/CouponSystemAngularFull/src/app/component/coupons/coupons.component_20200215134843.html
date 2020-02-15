@@ -1,0 +1,37 @@
+<img *ngIf="!allCoupons" src="/assets/loading.gif" >
+<h2 *ngIf="allCoupons">Here Are Our {{allCoupons.length}} Coupons: </h2>
+<button (click)="getAllCoupons()">get all coupons</button>
+<br><br>
+<div>
+  <table *ngIf="allCoupons">
+    <tr>
+      <th>title</th>
+      <th>startDate</th>
+      <th>endDate</th>
+      <th>amount</th>
+      <th>category</th>
+      <th>message</th>
+      <th>price</th>
+      <th>image</th>
+    </tr>
+      <tr style="cursor: pointer"  routerLink="/coupon-details/{{c.id}}" *ngFor="let c of allCoupons"
+
+      >
+        <td>           {{ c.title }}                   </td>
+        <td>           {{ c.startDate }}               </td>
+        <td>           {{ c.endDate }}                 </td>
+        <td>        {{c.amount | zeroSymbol}}          </td>
+        <td>           {{ c.category }}                </td>
+        <td>           {{ c.message }}                 </td>
+        <td>        {{c.price | currency: 'ILS'}}      </td>
+
+        <td> <app-thumbnail imageSource="/assets/images/coupons/{{c.id}}.jpg"
+          width="60" height="60"
+
+          ></app-thumbnail>
+    </td>
+
+      </tr>
+    </table>
+</div>
+

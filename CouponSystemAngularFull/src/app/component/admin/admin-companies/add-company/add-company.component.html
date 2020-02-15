@@ -1,0 +1,30 @@
+<!-- add company title -->
+<h1>Add Company:</h1>
+<br>
+
+<form #formInfo="ngForm">
+
+  <input #nameInfo="ngModel" pattern="^[A-Z].*$" type="text"
+   placeholder="Name..." name="name" [(ngModel)]="company.name" required>
+  <br>
+  <span *ngIf="nameInfo.errors?.required && nameInfo.touched" >Missing Name</span>
+  <span class="erorr" *ngIf="nameInfo.errors?.pattern && nameInfo.touched" >Name Must Start With A Capital Letter</span>
+  <br>
+
+  <input #passwordInfo="ngModel" required type="email" placeholder="Email..."
+  name="email" [(ngModel)]="company.email">
+ <br>
+ <span *ngIf="passwordInfo.invalid?.required && passwordInfo.touched" >Missing Email</span>
+ <br>
+
+  <input #passwordInfo="ngModel" required type="password" placeholder="Password..."
+   name="password" [(ngModel)]="company.password">
+  <br>
+  <span *ngIf="passwordInfo.invalid?.required && passwordInfo.touched" >Missing Password</span>
+  <br>
+
+
+  <button [disabled]="!formInfo.form.valid" (click)=" addCompany()">Add Company </button>
+  <br><br>
+  <button class="cancel" routerLink="/admin/admin-companies"> Cancel</button>
+</form>

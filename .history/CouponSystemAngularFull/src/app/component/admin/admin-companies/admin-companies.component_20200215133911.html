@@ -1,0 +1,65 @@
+<!-- add customer button -->
+<br>
+<button routerLink="/admin/add-company">Add New Company</button>
+
+<!-- loading gif -->
+<img *ngIf="!allCompanies" src="/assets/loading.gif" >
+<!-- title companies -->
+<h2 *ngIf="allCompanies">Here Are Oour {{ allCompanies.length }} Companies: </h2>
+<!-- company table -->
+<div>
+  <table *ngIf="allCompanies">
+    <tr>
+      <!-- th -->
+      <th>name</th>
+      <th>password</th>
+      <th>email</th>
+      <th>options</th>
+
+    </tr>
+      <tr  *ngFor="let c of allCompanies">
+        <!-- td -->
+        <td>           {{ c.name }}                </td>
+        <td>           {{ c.password }}            </td>
+        <td>           {{ c.email }}               </td>
+        <td>
+            <!-- remove button -->
+            <button (click)="remove(c.id)"> remove company</button>
+
+            <!-- edit button -->
+            <button (click)="edit(c)"> edit company</button>
+        </td>
+
+      </tr>
+    </table>
+</div>
+
+  <br>
+  <button class="backButton" routerLink="/admin"> Back To Admin</button>
+
+<!-- Second Form -->
+
+<form class="form" #editFormInfo="ngForm" *ngIf="editCompanyButton">
+  <input #nameInfo="ngModel" pattern="^[A-Z].*$" type="text"
+   placeholder="Name..." name="name" [(ngModel)]="company.name" required>
+  <br>
+  <span *ngIf="nameInfo.errors?.required && nameInfo.touched" >Missing Name</span>
+  <span class="erorr" *ngIf="nameInfo.errors?.pattern && nameInfo.touched" >Name Must Start With A Capital Letter</span>
+  <br>
+
+  <input #passwordInfo="ngModel" required type="email" placeholder="Email..."
+  name="email" [(ngModel)]="company.email">
+ <br>
+ <span *ngIf="passwordInfo.invalid?.required && passwordInfo.touched" >Missing Email</span>
+ <br>
+
+  <input #passwordInfo="ngModel" required type="password" placeholder="Password..."
+   name="password" [(ngModel)]="company.password">
+  <br>
+  <span *ngIf="passwordInfo.invalid?.required && passwordInfo.touched" >Missing Password</span>
+  <br>
+
+
+   <button [disabled]="editFormInfo.form.invalid" (click)="updateCompany()">Update Company </button>
+   <button (click)="editCompanyButton= false"> Cancel</button>
+</form>

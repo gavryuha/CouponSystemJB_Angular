@@ -1,0 +1,64 @@
+<!-- add customer button -->
+<br>
+<button routerLink="/admin/add-customer" >Add New Customer</button>
+
+<!-- loading gif -->
+<img *ngIf="!allCustomers" src="/assets/loading.gif" >
+
+<!-- all companies title-->
+<h2 *ngIf="allCustomers">here are our {{ allCustomers.length }} customers: </h2>
+
+<!-- First Form -->
+<div>
+  <table *ngIf="allCustomers">
+    <tr>
+      <th>name</th>
+      <th>email</th>
+      <th>password</th>
+      <th>options</th>
+    </tr>
+      <tr *ngFor="let c of allCustomers">
+        <td>           {{ c.name }}                   </td>
+        <td>           {{ c.email }}                   </td>
+        <td>           {{ c.password }}               </td>
+        <td>
+          <button  (click)="remove(c.id)"> remove customer</button>
+          <br>
+          <button  (click)="edit(c)"> edit customer</button>
+       </td>
+      </tr>
+    </table>
+</div>
+
+<br><br>
+<button routerLink="/admin" > Back To Admin</button>
+
+<!-- Second Form -->
+
+<form class="form" #editFormInfo="ngForm" *ngIf="editCustomerButton">
+
+
+
+   <input  #nameInfo="ngModel"  type="text"
+     placeholder="Name..." name="name" [(ngModel)]="customer.name" required>
+    <br>
+     <span *ngIf="nameInfo.errors?.required && nameInfo.touched" >Missing Name</span>
+   <br>
+
+    <input  #nameInfo="ngModel"  type="email"
+    placeholder="Email..." name="email" [(ngModel)]="customer.email" required>
+   <br>
+   <span *ngIf="nameInfo.errors?.required && nameInfo.touched" >Missing Email</span>
+   <br>
+
+
+   <input #passwordInfo="ngModel" required type="password" placeholder="Password..."
+    name="password" [(ngModel)]="customer.password">
+   <br>
+   <span *ngIf="passwordInfo.errors?.required && passwordInfo.touched" >Missing Password</span>
+   <br>
+
+   <button [disabled]="editFormInfo.form.invalid" (click)="updateCustomer()">Update</button>
+   <br><br>
+    <button (click)="editCustomerButton= false"> Cancel</button>
+</form>

@@ -1,0 +1,14 @@
+a {
+    font-size: x-large;
+    color: darkblue;
+    margin:  10px;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .active{
+    color: palevioletred;
+    font-weight: bold;
+  }
+  

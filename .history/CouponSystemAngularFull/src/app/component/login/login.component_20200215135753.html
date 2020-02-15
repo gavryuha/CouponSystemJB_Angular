@@ -1,0 +1,36 @@
+<h1>Login</h1>
+
+<div class="login-form">
+  <form #formInfo ="ngForm">
+
+  <input #nameInfo="ngModel" type="text" placeholder="Email..."
+   name="name" [(ngModel)]="email" required>
+  <br>
+  <span *ngIf="nameInfo.errors?.required && nameInfo.touched" >Missing Name</span>
+  <br>
+  <input #passwordInfo="ngModel" type="password" placeholder="Password..."
+   name="password" [(ngModel)]="password" required>
+  <br>
+  <span *ngIf="passwordInfo.errors?.required && passwordInfo.touched" >Missing Password</span>
+  <br><br>
+
+    <label class="container">
+      <input type="radio" [(ngModel)]="loginType" value="CUSTOMER" required name="loginType"> Customer
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">
+      <input type="radio" [(ngModel)]="loginType" value="COMPANY"  required name="loginType"> Company
+      <span class="checkmark"></span>
+    </label >
+
+    <label class="container">
+      <input type="radio" [(ngModel)]="loginType" value="ADMIN" required name="loginType"> Admin
+      <span class="checkmark"></span>
+    </label>
+
+    <br><br>
+    <button [disabled]="!formInfo.form.valid" (click)="login()" > Login </button>
+    <br>
+  </form>
+</div>

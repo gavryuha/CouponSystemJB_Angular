@@ -1,0 +1,12 @@
+<img *ngIf="!coupon" src="/assets/loading.gif" >
+
+<div *ngIf="coupon">
+
+<h3>Title: {{coupon.title}}</h3>
+<h3>Price: {{coupon.price}}</h3>
+<h3>Amount: {{coupon.amount}}</h3>
+
+<br><br>
+</div>
+<a routerLink="/customer">Back to list</a>
+

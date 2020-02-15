@@ -1,0 +1,34 @@
+<h1>My Coupons:</h1>
+<div *ngIf="customerCoupons" >
+      <table>
+
+       <tr>
+         <th>title</th>
+         <th>startDate</th>
+         <th>endDate</th>
+         <th>category</th>
+         <th>message</th>
+         <th>price</th>
+         <th>imageURL</th>
+       </tr>
+
+       <tr *ngFor="let c of customerCoupons">
+         <td>{{ c.title }}</td>
+         <td>{{ c.startDate }}</td>
+         <td>{{ c.endDate }}</td>
+         <td>{{ c.category | category }}</td>
+         <td>{{ c.message }}</td>
+         <td>{{ c.price | currency: 'ILS'}}</td>
+         <td><app-thumbnail
+          imageSource="{{ c.imageURL}}"
+          width="60" height="60"
+          ></app-thumbnail>
+          </td>
+       </tr>
+
+      </table>
+ </div>
+
+<div class="nocoupons" *ngIf="!customerCoupons" >
+  <h2>This customer has no coupons!</h2>
+</div>

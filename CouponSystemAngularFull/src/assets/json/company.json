@@ -1,0 +1,6 @@
+[
+	{ "id": 1, "name": "Zara", "password": 1234, "email": "zara@gmail.com"},
+	{ "id": 2, "name": "Fox", "password": 1212, "email": "fox@gmail.com"},
+	{ "id": 3, "name": "Catro", "password": 1111, "email": "castro@gmail.com"},
+	{ "id": 4, "name": "The North Face", "password": 4321, "email": "theNorthFace@gmail.com"}
+]

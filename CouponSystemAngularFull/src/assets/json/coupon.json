@@ -1,0 +1,9 @@
+[
+	{ "id": 1, "title": "Zara", "startDate": "01/01/2019","endDate":"01/01/2023", "amount": 20, "category":7, "message": "20% in Zara", 			"price": 299, "imageURL": "/home/naor/Angular/CouponsSystem/src/assets/images/zara.png" },
+	{ "id": 2, "title": "Fox", "startDate": "01/01/2019","endDate":"01/01/2021", "amount": 50, "category":7, "message": "20% in Fox", 			"price": 199, "imageURL": "/home/naor/Angular/CouponsSystem/src/assets/images/fox.jpg" },
+	{ "id": 3, "title": "Castro", "startDate": "01/01/2019","endDate":"01/01/2022", "amount": 40, "category":7, "message": "20% in Castro", 			"price": 99, "imageURL": "/home/naor/Angular/CouponsSystem/src/assets/images/castro.png" },
+	{ "id": 4, "title": "The North Face", "startDate": "01/01/2019","endDate":"01/01/2022", "amount": 140, "category":6, "message": "20% in Colombia", 			"price": 179, "imageURL": "/home/naor/Angular/CouponsSystem/src/assets/images/north face.png" }
+
+
+
+]

@@ -1,0 +1,93 @@
+<button class="addButton" style="cursor: pointer" routerLink="/add-coupon"> create new coupon</button>
+
+<!-- <img *ngIf="!allCoupons" src="/assets/loading.gif"> -->
+
+<h2 *ngIf="allCoupons">Here Are Our {{allCoupons.length}} Coupons: </h2>
+<div >
+  <table *ngIf="allCoupons">
+    <tr>
+      <th> title </th>
+      <th>startDate</th>
+      <th>endDate</th>
+      <th>amount</th>
+      <th>category</th>
+      <th>message</th>
+      <th>price</th>
+      <th>image</th>
+      <th>options</th>
+    </tr>
+      <tr *ngFor="let c of allCoupons" >
+        <td>           {{ c.title }}                   </td>
+        <td>           {{ c.startDate }}               </td>
+        <td>           {{ c.endDate }}                 </td>
+        <td>        {{c.amount | zeroSymbol}}          </td>
+        <td>           {{ c.category }}                </td>
+        <td>           {{ c.message }}                 </td>
+        <td>        {{c.price | currency: 'ILS'}}      </td>
+
+        <td> <app-thumbnail imageSource="{{ c.imageURL}}"
+          width="80" height="80"
+          ></app-thumbnail>
+        </td>
+
+        <td>
+            <button (click)="edit(c)"> edit coupon</button>
+            <button (click)="removeCoupon(c.id)"> remove coupon</button>
+         </td>
+
+      </tr>
+    </table>
+</div>
+
+<div class="nocoupons" *ngIf="!allCoupons" >
+  <h2>This company has no coupons!</h2>
+</div>
+
+
+<form class="form2" #formInfo="ngForm" *ngIf="editCouponButton">
+
+  <input #titleInfo="ngModel" pattern="^[A-Z].*$" type="text" placeholder="Title..." name="title" [(ngModel)]="coupon.title" required>
+  <br>
+  <span *ngIf="titleInfo.errors?.required && titleInfo.touched" >Missing Title</span>
+  <span class="erorr" *ngIf="titleInfo.errors?.pattern && titleInfo.touched" >Title Must Start With A Capital Letter</span>
+  <br>
+
+  <input #startDateInfo="ngModel" required type="date" placeholder="Start Date..." name="startDate"[(ngModel)]="coupon.startDate" >
+  <span *ngIf="startDateInfo.invalid?.required && titleInfo.touched" >Missing Date</span>
+  <br>
+
+  <input #endDateInfo="ngModel" required type="date" placeholder="End Date..." name="endDate" [(ngModel)]="coupon.endDate">
+  <span *ngIf="endDateInfo.invalid?.required && titleInfo.touched" >Missing Date</span>
+  <br>
+
+  <input #amountInfo="ngModel" required  min="0" max="1000" type="number" placeholder="Amount..." name="amount" [(ngModel)]="coupon.amount">
+  <span *ngIf="amountInfo.invalid?.required && titleInfo.touched" >Missing Amount</span>
+  <br>
+
+  <select #categotyInfo="ngModel" name="category" [(ngModel)]="coupon.category" >
+      <option value="0">Travling</option>
+      <option value="1">Food</option>
+      <option value="2">Electtricity</option>
+      <option value="3">Healh</option>
+      <option value="4">Sports</option>
+      <option value="5">Camping</option>
+      <option value="6">Fashion</option>
+      <option value="7">Studies</option>
+    </select>
+  <br>
+
+  <input #messageInfo="ngModel" required type="text" placeholder="Message..." name="message" [(ngModel)]="coupon.message">
+  <br>
+  <span *ngIf="messageInfo.invalid?.required && titleInfo.touched" >Missing Message</span>
+  <br>
+
+  <input #priceInfo="ngModel" required type="number" placeholder="Price.." name="price" [(ngModel)]="coupon.price">
+  <span *ngIf="priceInfo.invalid?.required && titleInfo.touched" >Missing Price</span>
+  <br>
+
+  <input #imageUrlInfo="ngModel" required type="text" placeholder="ImageURL.." name="imageURL" [(ngModel)]="coupon.imageURL">
+  <span *ngIf="imageUrlInfo.invalid?.required && titleInfo.touched" >Missing URL</span>
+  <br>
+  <button [disabled]="!formInfo.form.valid" (click)="updateCoupon()">Update Coupon </button>
+  <button (click)="editCouponButton= false"> Cancel</button>
+</form>
