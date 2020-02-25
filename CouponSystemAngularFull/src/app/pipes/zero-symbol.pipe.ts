@@ -5,8 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ZeroSymbolPipe implements PipeTransform {
 
-  transform(value: any, ...args: any[]): any {
-    return null;
+  public transform(value: any, args?: any): any {
+
+    if (value > 0) {
+      return value;
+    }
+    if (args) {
+      return args;
+    }
+    return '---';
   }
 
 }

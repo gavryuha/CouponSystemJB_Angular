@@ -1,15 +1,14 @@
 img {
-    height: 70%;
-    margin: 0;
-    position: relative;
-    top: 50%;
-    border-radius: 25px;
-  }
-  
-  h3{
+  height: 70%;
+  margin: 0;
   position: relative;
-  font-size: 2vw;
-  color: darkblue;
   top: 50%;
-  }
-  
+  border-radius: 25px;
+}
+
+h3{
+position: relative;
+font-size: 2vw;
+color: darkblue;
+top: 50%;
+}

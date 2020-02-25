@@ -1,54 +1,53 @@
 <!-- Form -->
 <form #formInfo="ngForm">
 
-    <!-- Coupon inputs -->
-    <input #titleInfo="ngModel" pattern="^[A-Z].*$" type="text" placeholder="Title..." name="title" [(ngModel)]="coupon.title" required>
-    <br>
-    <span *ngIf="titleInfo.errors?.required && titleInfo.touched" >Missing Title</span>
-    <span class="erorr" *ngIf="titleInfo.errors?.pattern && titleInfo.touched" >Title Must Start With A Capital Letter</span>
-    <br>
-  
-    <input #startDateInfo="ngModel" required type="date" placeholder="Start Date..." name="startDate"[(ngModel)]="coupon.startDate" >
-    <span *ngIf="startDateInfo.invalid?.required && titleInfo.touched" >Missing Date</span>
-    <br>
-  
-    <input #endDateInfo="ngModel" required type="date" placeholder="End Date..." name="endDate" [(ngModel)]="coupon.endDate">
-    <span *ngIf="endDateInfo.invalid?.required && titleInfo.touched" >Missing Date</span>
-    <br>
-  
-    <input #amountInfo="ngModel" required  min="0" max="1000" type="number" placeholder="Amount..." name="amount" [(ngModel)]="coupon.amount">
-    <span *ngIf="amountInfo.invalid?.required && titleInfo.touched" >Missing Amount</span>
-    <br>
-    <!-- Select 4 category -->
-    <select #categotyInfo="ngModel" name="category" [(ngModel)]="coupon.category" >
-        <option value="0">Travling</option>
-        <option value="1">Food</option>
-        <option value="2">Electtricity</option>
-        <option value="3">Healh</option>
-        <option value="4">Sports</option>
-        <option value="5">Camping</option>
-        <option value="6">Fashion</option>
-        <option value="7">Studies</option>
-      </select>
-    <br>
-  
-    <input #messageInfo="ngModel" required type="text" placeholder="Message..." name="message" [(ngModel)]="coupon.message">
-    <br>
-    <span *ngIf="messageInfo.invalid?.required && titleInfo.touched" >Missing Message</span>
-    <br>
-  
-    <input #priceInfo="ngModel" required type="number" placeholder="Price.." name="price" [(ngModel)]="coupon.price">
-    <span *ngIf="priceInfo.invalid?.required && titleInfo.touched" >Missing Price</span>
-    <br>
-  
-    <input #imageUrlInfo="ngModel" required type="text" placeholder="ImageURL.." name="imageURL" [(ngModel)]="coupon.imageURL">
-    <span *ngIf="imageUrlInfo.invalid?.required && titleInfo.touched" >Missing URL</span>
-    <br>
-  
-    <!-- Add Coupon button -->
-    <button [disabled]="!formInfo.form.valid" (click)="addCoupon()">Add Coupon </button>
-    <br>
-    <!-- Add Cancel button -->
-    <button class="cancel" routerLink="/company"> Cancel</button>
-  </form>
-  
+  <!-- Coupon inputs -->
+  <input #titleInfo="ngModel" pattern="^[A-Z].*$" type="text" placeholder="Title..." name="title" [(ngModel)]="coupon.title" required>
+  <br>
+  <span *ngIf="titleInfo.errors?.required && titleInfo.touched" >Missing Title</span>
+  <span class="erorr" *ngIf="titleInfo.errors?.pattern && titleInfo.touched" >Title Must Start With A Capital Letter</span>
+  <br>
+
+  <input #startDateInfo="ngModel" required type="date" placeholder="Start Date..." name="startDate"[(ngModel)]="coupon.startDate" >
+  <span *ngIf="startDateInfo.invalid?.required && titleInfo.touched" >Missing Date</span>
+  <br>
+
+  <input #endDateInfo="ngModel" required type="date" placeholder="End Date..." name="endDate" [(ngModel)]="coupon.endDate">
+  <span *ngIf="endDateInfo.invalid?.required && titleInfo.touched" >Missing Date</span>
+  <br>
+
+  <input #amountInfo="ngModel" required  min="0" max="1000" type="number" placeholder="Amount..." name="amount" [(ngModel)]="coupon.amount">
+  <span *ngIf="amountInfo.invalid?.required && titleInfo.touched" >Missing Amount</span>
+  <br>
+  <!-- Select 4 category -->
+  <select #categotyInfo="ngModel" name="category" [(ngModel)]="coupon.category" >
+      <option value="0">Travling</option>
+      <option value="1">Food</option>
+      <option value="2">Electtricity</option>
+      <option value="3">Healh</option>
+      <option value="4">Sports</option>
+      <option value="5">Camping</option>
+      <option value="6">Fashion</option>
+      <option value="7">Studies</option>
+    </select>
+  <br>
+
+  <input #messageInfo="ngModel" required type="text" placeholder="Message..." name="message" [(ngModel)]="coupon.message">
+  <br>
+  <span *ngIf="messageInfo.invalid?.required && titleInfo.touched" >Missing Message</span>
+  <br>
+
+  <input #priceInfo="ngModel" required type="number" placeholder="Price.." name="price" [(ngModel)]="coupon.price">
+  <span *ngIf="priceInfo.invalid?.required && titleInfo.touched" >Missing Price</span>
+  <br>
+
+  <input #imageUrlInfo="ngModel" required type="text" placeholder="ImageURL.." name="imageURL" [(ngModel)]="coupon.imageURL">
+  <span *ngIf="imageUrlInfo.invalid?.required && titleInfo.touched" >Missing URL</span>
+  <br>
+
+  <!-- Add Coupon button -->
+  <button [disabled]="!formInfo.form.valid" (click)="addCoupon()">Add Coupon </button>
+  <br>
+  <!-- Add Cancel button -->
+  <button class="cancel" routerLink="/company"> Cancel</button>
+</form>
